@@ -2,30 +2,39 @@
 #include <string>
 #include <vector>
 #include <time.h>
+#include <fstream>
 
 #include "insultgenerator_17ep14.h"
+//#include "InsultsSource.txt"
 
 using namespace std;
 
-class InsultGenerator {
 
-    public:
-        void initialize();
-        string talkToMe();
-        vector<string> generate(int num);
-        void generateAndSave(string, int num);
-
-    private:
-        vector<int> column1;
-        vector<int> column2;
-        vector<int> column3;
- };
-
-void initalize()
-{
+void InsultGenerator::initialize() {
+    string filename = "InsultsSource.txt";
+    ifstream fs(filename);
+    int num = 0;
     
+    //fs.open(filename);   // .c_str
+    if (fs.fail()) {
+        cerr << "Unable to open file: " << "InsultsSource.txt"<< endl;
+    }
 
+    string col1;
+    string col2;
+    string col3;
+
+        while (fs >> col1 >> col2 >> col3) {
+            column1[num] = col1;
+            column2[num] = col2;
+            column3[num] = col3;
+            num++;
+        }
+
+    fs.close();
 }
+
+
 
 // .initalize() reads form file
 //.talk to me returns 1 insult
