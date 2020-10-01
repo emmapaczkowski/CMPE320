@@ -35,13 +35,13 @@ void InsultGenerator::initialize() {
 }
 
 string InsultGenerator::talkToMe() {
-    int one = rand()%50;
-    int two = rand()%50;
-    int three = rand()%50;
-    cout <<"Thou "<< column1[one] <<" "<< column2[two] <<" "<< column3[three] <<"!"<< endl;
+    //int one = rand()%50;
+    //int two = rand()%50;
+    //int three = rand()%50;
+    //cout <<"Thou "<< column1[rand()%50] <<" "<< column2[rand()%50] <<" "<< column3[rand()%50] <<"!"<< endl;
     //string insult = column1[one] + " " + column2[rand()%100-50] + " " + column3[rand()%100-50];
     //return insult;
-    return ("end");
+    return ("Thou "+ column1[rand()%50] + " " + column2[rand()%50] + " " + column3[rand()%50] + "!" );
 }
 /*
 vector<string> InsultGenerator::generate(int num) {
