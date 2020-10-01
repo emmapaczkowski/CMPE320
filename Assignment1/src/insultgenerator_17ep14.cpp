@@ -32,25 +32,31 @@ void InsultGenerator::initialize() {
         }
 
     fs.close();
-    cout << "Array 1:" << endl;
-    for (int i =0; i < 49; i++ ) {
-        cout << column1[i] << ", " ;
-    }
-
-    cout << "Array 2:" << endl;
-    for (int i =0; i < 49; i++ ) {
-        cout << column2[i] << ", " ;
-    }
-
-    cout << "Array 3:" << endl;
-    for (int i =0; i < 49; i++ ) {
-        cout << column3[i] << ", " ;
-    }
 }
 
+string InsultGenerator::talkToMe() {
+    int one = rand()%50;
+    int two = rand()%50;
+    int three = rand()%50;
+    cout <<"Thou "<< column1[one] <<" "<< column2[two] <<" "<< column3[three] <<"!"<< endl;
+    //string insult = column1[one] + " " + column2[rand()%100-50] + " " + column3[rand()%100-50];
+    //return insult;
+    return ("end");
+}
+/*
+vector<string> InsultGenerator::generate(int num) {
+
+}
+
+void InsultGenerator::generateAndSave(string outFile, int num) {
+
+}
+
+*/
 
 
-// .initalize() reads form file
+
+
 //.talk to me returns 1 insult
 //.generate(int) generates int number of insults
 //.generateAndSave(file.txt, int) saves the insults to a given file

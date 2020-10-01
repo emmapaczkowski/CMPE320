@@ -15,8 +15,11 @@
 using namespace std;
 
 int main() {
-    InsultGenerator ig;
-    ig.initialize();
+  srand (time (NULL));
+  InsultGenerator ig;
+  ig.initialize();
+  cout << "A single insult:" << endl;
+  cout << ig.talkToMe() << endl;
 
 /*
 	InsultGenerator ig;
