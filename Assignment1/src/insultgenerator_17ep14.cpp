@@ -11,7 +11,7 @@ using namespace std;
 
 
 void InsultGenerator::initialize() {
-    string filename = "InsultsSource.txt";
+    string filename = "src\\InsultsSource.txt";
     ifstream fs(filename);
     int num = 0;
     
@@ -32,6 +32,20 @@ void InsultGenerator::initialize() {
         }
 
     fs.close();
+    cout << "Array 1:" << endl;
+    for (int i =0; i < 49; i++ ) {
+        cout << column1[i] << ", " ;
+    }
+
+    cout << "Array 2:" << endl;
+    for (int i =0; i < 49; i++ ) {
+        cout << column2[i] << ", " ;
+    }
+
+    cout << "Array 3:" << endl;
+    for (int i =0; i < 49; i++ ) {
+        cout << column3[i] << ", " ;
+    }
 }
 
 
