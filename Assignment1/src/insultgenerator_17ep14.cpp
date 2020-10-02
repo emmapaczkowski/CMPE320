@@ -72,12 +72,16 @@ vector<string> InsultGenerator::generate(int num) {
     }
 }
 
-/*
 void InsultGenerator::generateAndSave(string outFile, int num) {
-
+    vector<string> generatedInsults = generate(num);
+    ofstream out(outFile);
+    for (int i=0 ; i<num ; i++) {
+        out << generatedInsults[i] << endl;
+    }
+    return;
 }
 
-*/
+
 
 
 
