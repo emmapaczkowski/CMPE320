@@ -4,9 +4,9 @@
 #include <time.h>
 #include <fstream>
 #include <set>
+#include <stdexcept>
 
 #include "insultgenerator_17ep14.h"
-//#include "InsultsSource.txt"
 
 using namespace std;
 
@@ -16,9 +16,8 @@ void InsultGenerator::initialize() {
     ifstream fs(filename);
     int num = 0;
     
-    //fs.open(filename);   // .c_str
     if (fs.fail()) {
-        cerr << "Unable to open file: " << "InsultsSource.txt"<< endl;
+        throw FileException("File not opening");
     }
 
     string col1;
@@ -33,7 +32,7 @@ void InsultGenerator::initialize() {
         }
 
     fs.close();
-}
+};
 
 string InsultGenerator::talkToMe() {
     return ("Thou "+ column1[rand()%50] + " " + column2[rand()%50] + " " + column3[rand()%50] + "!" );
@@ -43,8 +42,9 @@ vector<string> InsultGenerator::generate(int num) {
     if (num == 0) {
         return {};
     }
-    if (num > 1000) {
-        cout << "requested number of insults is out of bounds" << endl;
+    if (num > 10000) {
+        throw (NumInsultsOutOfBounds("Requested nuber on insults exceed 10,000."));
+
         return {};
     }
     else {
@@ -81,11 +81,12 @@ void InsultGenerator::generateAndSave(string outFile, int num) {
     return;
 }
 
+FileException::FileException(const string& message) : message(message) {}
+string&  FileException::what() {
+    return message;
+}
 
-
-
-
-
-//.talk to me returns 1 insult
-//.generate(int) generates int number of insults
-//.generateAndSave(file.txt, int) saves the insults to a given file
+NumInsultsOutOfBounds::NumInsultsOutOfBounds(const string& message) : message(message) {}
+string& NumInsultsOutOfBounds::what() {
+    return message;
+}

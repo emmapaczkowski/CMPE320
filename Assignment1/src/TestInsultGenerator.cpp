@@ -15,15 +15,7 @@
 using namespace std;
 
 int main() {
-  srand (time (NULL)); // keep this it makes sure that you are getting new rand nums
-  InsultGenerator ig;
-  ig.initialize();
-  ig.generateAndSave("Nothing.txt", 10);
-		
-  //cout << "A single insult:" << endl;
-  //cout << ig.talkToMe() << endl;
-
-/*
+    srand (time (NULL)); 
 	InsultGenerator ig;
 	vector<string> insults;
 	clock_t start=0, finish=0;
@@ -92,5 +84,5 @@ int main() {
 	cout << (1e3 * (finish - start)/CLOCKS_PER_SEC) << " msec to complete." << endl;
 
 	return 0;
-*/
+
 } // end main
