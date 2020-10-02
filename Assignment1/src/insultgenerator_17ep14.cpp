@@ -60,7 +60,12 @@ vector<string> InsultGenerator::generate(int num) {
         }
         set<int>::iterator it = mySet.begin();
         while (it != mySet.end()) {
-            cout<< (*it) << endl;
+            int col1 = (*it/10000);
+            int col2 =((*it%10000)/100);
+            int col3 = (*it%100);
+
+            cout<<"the iterator value:"<< (*it) << endl;
+            cout<<"Thou " << column1[col1]<< " " << column2[col2]<< " " << column3[col3]<< "!"<< endl;
             it++;
         }
      return{};
