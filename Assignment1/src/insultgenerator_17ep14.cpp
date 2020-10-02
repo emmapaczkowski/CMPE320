@@ -3,6 +3,7 @@
 #include <vector>
 #include <time.h>
 #include <fstream>
+#include <set>
 
 #include "insultgenerator_17ep14.h"
 //#include "InsultsSource.txt"
@@ -35,19 +36,38 @@ void InsultGenerator::initialize() {
 }
 
 string InsultGenerator::talkToMe() {
-    //int one = rand()%50;
-    //int two = rand()%50;
-    //int three = rand()%50;
-    //cout <<"Thou "<< column1[rand()%50] <<" "<< column2[rand()%50] <<" "<< column3[rand()%50] <<"!"<< endl;
-    //string insult = column1[one] + " " + column2[rand()%100-50] + " " + column3[rand()%100-50];
-    //return insult;
     return ("Thou "+ column1[rand()%50] + " " + column2[rand()%50] + " " + column3[rand()%50] + "!" );
 }
-/*
-vector<string> InsultGenerator::generate(int num) {
 
+vector<string> InsultGenerator::generate(int num) {
+    if (num == 0) {
+        return {};
+    }
+    if (num > 1000) {
+        cout << "requested number of insults is out of bounds" << endl;
+        return {};
+    }
+    else {
+
+        set<int> mySet;
+        int count = num;
+        while (count > 0 ) {
+            int key = rand()%50*10000 + rand()%50*100 + rand()%50;
+            if (mySet.find(key) == mySet.end()) {
+               mySet.insert(key);
+              count--;
+            }
+        }
+        set<int>::iterator it = mySet.begin();
+        while (it != mySet.end()) {
+            cout<< (*it) << endl;
+            it++;
+        }
+     return{};
+    }
 }
 
+/*
 void InsultGenerator::generateAndSave(string outFile, int num) {
 
 }

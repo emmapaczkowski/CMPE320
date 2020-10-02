@@ -15,11 +15,12 @@
 using namespace std;
 
 int main() {
-  srand (time (NULL));
+  srand (time (NULL)); // keep this it makes sure that you are getting new rand nums
   InsultGenerator ig;
   ig.initialize();
-  cout << "A single insult:" << endl;
-  cout << ig.talkToMe() << endl;
+  vector<string> insults = ig.generate(100);
+  //cout << "A single insult:" << endl;
+  //cout << ig.talkToMe() << endl;
 
 /*
 	InsultGenerator ig;
