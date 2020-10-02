@@ -48,9 +48,9 @@ vector<string> InsultGenerator::generate(int num) {
         return {};
     }
     else {
-
         set<int> mySet;
         int count = num;
+        vector<string> allInsults;
         while (count > 0 ) {
             int key = rand()%50*10000 + rand()%50*100 + rand()%50;
             if (mySet.find(key) == mySet.end()) {
@@ -58,17 +58,17 @@ vector<string> InsultGenerator::generate(int num) {
               count--;
             }
         }
+
         set<int>::iterator it = mySet.begin();
         while (it != mySet.end()) {
             int col1 = (*it/10000);
             int col2 =((*it%10000)/100);
             int col3 = (*it%100);
-
-            cout<<"the iterator value:"<< (*it) << endl;
-            cout<<"Thou " << column1[col1]<< " " << column2[col2]<< " " << column3[col3]<< "!"<< endl;
+            allInsults.push_back("Thou " + column1[col1] + " " + column2[col2] + " " + column3[col3] + "!");
             it++;
         }
-     return{};
+
+    return allInsults;
     }
 }
 

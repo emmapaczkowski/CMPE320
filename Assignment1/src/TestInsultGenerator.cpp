@@ -18,7 +18,12 @@ int main() {
   srand (time (NULL)); // keep this it makes sure that you are getting new rand nums
   InsultGenerator ig;
   ig.initialize();
-  vector<string> insults = ig.generate(3);
+  vector<string> insults = ig.generate(100);
+  if (insults.size() > 0) {
+	  for (int i = 0; i < 100; i++)
+			cout << insults[i] << endl;
+  }
+		
   //cout << "A single insult:" << endl;
   //cout << ig.talkToMe() << endl;
 
