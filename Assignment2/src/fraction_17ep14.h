@@ -32,21 +32,31 @@ class Fraction {
         friend Fraction operator - (const Fraction&, const Fraction&);
         friend Fraction operator * (const Fraction&, const Fraction&);
         friend Fraction operator / (const Fraction&, const Fraction&);
-
-        friend Fraction operator < (const Fraction&, const Fraction&);
+       
+        friend bool operator > (const Fraction&, const Fraction&);
+        friend bool operator < (const Fraction&, const Fraction&);
+        
         bool operator <= (const Fraction&);
         bool operator == (const Fraction&);
-        bool operator != (const Fraction&);
         bool operator >= (const Fraction&);
-        bool operator > (const Fraction&);
-        
+       
+
+        friend bool operator != (const Fraction&, const Fraction&);
         friend istream& operator >> (istream&, Fraction&);
         friend ostream& operator << (ostream&, const Fraction&);
-
-    private:
+        
+    //private:
         int numerator;
         int denominator;
 
+};
+
+class FractionException {
+public:
+    FractionException(const string& message);
+    string& what(void);
+private:
+    string message;
 };
 
 int greatestCommonDivisor(int x, int y) {

@@ -145,7 +145,7 @@ bool operator != (const Fraction& fracOne, const Fraction& fracTwo) {
 
 
 ostream& operator << (ostream& outStream, const Fraction& frac) {
-    outStream << frac.numerator() << "/" << frac.denominator();
+    outStream << frac.getNumerator() << "/" << frac.getDenominator();
     return outStream;
 }
 
