@@ -28,8 +28,8 @@ int main() {
 	}
 
 	// Test accessors
-	cout << "Numerator should be -7: " << test4.getNumerator() << endl;
-	cout << "Denominator should be 2: " << test4.getDenominator() << endl;
+	cout << "Numerator should be -7: " << test4.numerator() << endl;
+	cout << "Denominator should be 2: " << test4.denominator() << endl;
 
 	// Test binary arithmetic operators
 	Fraction test6(9, 8);

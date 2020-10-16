@@ -8,100 +8,100 @@
 
 using namespace std;
 
-Fraction::Fraction() : numerator(0), denominator(0) { }
-Fraction::Fraction(int num) : numerator(num), denominator(1) {}
-Fraction::Fraction(int num, int denom) {
-   int gcd = greatestCommonDivisor(num, denom);
-   this->setNumerator(num/gcd);
-   this->setDenominator(denom/gcd);
+Fraction::Fraction() : num(0), denom(0) { }
+Fraction::Fraction(int numer) : num(numer), denom(1) {}
+Fraction::Fraction(int numer, int denomin) {
+   int gcd = greatestCommonDivisor(numer, denomin);
+   this->setnum(numer/gcd);
+   this->setdenom(denomin/gcd);
 } 
 
 
 Fraction Fraction::operator - (void) const {
-    return(Fraction(-numerator, denominator));
+    return(Fraction(-num, denom));
 }
 Fraction Fraction::operator ++ () {
-    numerator += denominator;
+    num += denom;
     return *this;
 }
-Fraction Fraction::operator ++ (int num) {
+Fraction Fraction::operator ++ (int numer) {
     Fraction temp = *this;
-    numerator += denominator;
+    numer += denom;
     return temp;
 }
 
 Fraction Fraction::operator += (const Fraction& fracOne) {
-    if (denominator == fracOne.denominator) {
-        numerator += fracOne.numerator;
+    if (denom == fracOne.denom) {
+        num += fracOne.num;
     } else {
-        int gcd = ((numerator*fracOne.denominator),(denominator*fracOne.numerator));
-        numerator = (numerator*fracOne.denominator)/gcd;
-        denominator = (denominator*fracOne.numerator)/gcd;
+        int gcd = ((num*fracOne.denom),(denom*fracOne.num));
+        num = (num*fracOne.denom)/gcd;
+        denom = (denom*fracOne.num)/gcd;
     }
 }
 
 
 
 Fraction operator + (const Fraction& fracOne, const Fraction& fracTwo) {
-    if (fracOne.denominator == fracTwo.denominator) {
-        return ( Fraction((fracOne.numerator + fracTwo.numerator), fracOne.denominator));
+    if (fracOne.denom == fracTwo.denom) {
+        return ( Fraction((fracOne.num + fracTwo.num), fracOne.denom));
     } else {
-        return ((fracOne.numerator*fracTwo.denominator + fracTwo.numerator*fracOne.denominator),(fracOne.denominator*fracTwo.denominator));
+        return ((fracOne.num*fracTwo.denom + fracTwo.num*fracOne.denom),(fracOne.denom*fracTwo.denom));
     }
 }
 
 Fraction operator - (const Fraction& fracOne, const Fraction& fracTwo) {
-     if (fracOne.denominator == fracTwo.denominator) {
-        return ( Fraction((fracOne.numerator - fracTwo.numerator),fracOne.denominator));
+     if (fracOne.denom == fracTwo.denom) {
+        return ( Fraction((fracOne.num - fracTwo.num),fracOne.denom));
     } else {
-        return ((fracOne.numerator*fracTwo.denominator - fracTwo.numerator*fracOne.denominator),(fracOne.denominator*fracTwo.denominator));
+        return ((fracOne.num*fracTwo.denom - fracTwo.num*fracOne.denom),(fracOne.denom*fracTwo.denom));
     }
 }
 
 Fraction operator * (const Fraction& fracOne, const Fraction& fracTwo) {
-    return ((fracOne.numerator*fracTwo.numerator),(fracOne.denominator*fracTwo.denominator));
+    return ((fracOne.num*fracTwo.num),(fracOne.denom*fracTwo.denom));
 
 }
 
 Fraction operator / (const Fraction& fracOne, const Fraction& fracTwo) {
-    return ((fracOne.numerator*fracTwo.denominator),(fracOne.denominator*fracTwo.numerator));
+    return ((fracOne.num*fracTwo.denom),(fracOne.denom*fracTwo.num));
 }
 
 
 
 bool operator < (const Fraction& lesser, const Fraction& greater) {
-    if (lesser.denominator == greater.denominator) {
-        if (lesser.numerator < greater.numerator)
+    if (lesser.denom == greater.denom) {
+        if (lesser.num < greater.num)
             return false;
         return true;
     } else {
-        if (lesser.numerator*greater.denominator < greater.numerator*lesser.denominator)
+        if (lesser.num*greater.denom < greater.num*lesser.denom)
             return true;
         return false;
     }
 }
 
 bool operator > (const Fraction& greater, const Fraction& lesser) {
-    if (greater.denominator == lesser.denominator) {
-        if (greater.numerator > lesser.numerator)
+    if (greater.denom == lesser.denom) {
+        if (greater.num > lesser.num)
             return false;
         return true;
     } else {
-        if (greater.numerator*lesser.denominator > lesser.numerator*greater.denominator)
+        if (greater.num*lesser.denom > lesser.num*greater.denom)
             return true;
         return false;
     }
 }
 
 bool Fraction::operator <= (const Fraction& greater) {
-    if (denominator == greater.denominator) {
-        if (numerator <= greater.numerator) {
+    if (denom == greater.denom) {
+        if (num <= greater.num) {
             return false;
         }
         return true;
     } else {
-        numerator = numerator*greater.denominator;
-        if (numerator <= greater.numerator*denominator) {
+        num = num*greater.denom;
+        if (num <= greater.num*denom) {
             return true;
         }
         return false;
@@ -109,7 +109,7 @@ bool Fraction::operator <= (const Fraction& greater) {
 }
 
 bool Fraction::operator == (const Fraction& fracOne) {
-    if (numerator == fracOne.numerator&& denominator == fracOne.denominator) {
+    if (num == fracOne.num&& denom == fracOne.denom) {
         return true;
     } else {
         return false;
@@ -119,14 +119,14 @@ bool Fraction::operator == (const Fraction& fracOne) {
 
 
 bool Fraction::operator >= (const Fraction& lesser) {
-    if (denominator == lesser.denominator) {
-        if (numerator >= lesser.numerator) {
+    if (denom == lesser.denom) {
+        if (num >= lesser.num) {
             return false;
         }
         return true;
     } else {
-        numerator = numerator*lesser.denominator;
-        if (numerator >= lesser.numerator*denominator) {
+        num = num*lesser.denom;
+        if (num >= lesser.num*denom) {
             return true;
         }
         return false;
@@ -134,7 +134,7 @@ bool Fraction::operator >= (const Fraction& lesser) {
 }
 
 bool operator != (const Fraction& fracOne, const Fraction& fracTwo) {
-    if ( fracOne.numerator != fracTwo.numerator || fracOne.denominator != fracTwo.denominator) {
+    if ( fracOne.num != fracTwo.num || fracOne.denom != fracTwo.denom) {
         return true;
     }
     else {
@@ -145,7 +145,7 @@ bool operator != (const Fraction& fracOne, const Fraction& fracTwo) {
 
 
 ostream& operator << (ostream& outStream, const Fraction& frac) {
-    outStream << frac.getNumerator() << "/" << frac.getDenominator();
+    outStream << frac.numerator() << "/" << frac.denominator();
     return outStream;
 }
 
@@ -155,8 +155,8 @@ istream& operator >> (istream& inStream, Fraction& fraction) {
     
     int n, d;
     getline(inStream, input);
-    string numeratorString;
-    string denominatorString;
+    string numString;
+    string denomString;
     
     bool slash = false;
     
@@ -170,15 +170,15 @@ istream& operator >> (istream& inStream, Fraction& fraction) {
     if (slash) {
         for (int i = 0; i < input.length(); i++) {
             if (input[i] == '/') {
-                numeratorString.append(input.substr(0,i));
-                denominatorString.append(input.substr(i+1,input.length() - 1));
-                fraction.numerator = atoi(numeratorString.c_str());
-                fraction.denominator = atoi(denominatorString.c_str());
+                numString.append(input.substr(0,i));
+                denomString.append(input.substr(i+1,input.length() - 1));
+                fraction.num = atoi(numString.c_str());
+                fraction.denom = atoi(denomString.c_str());
             }
         }
     } else {
-        fraction.numerator = atoi(input.c_str());
-        fraction.denominator = 1;
+        fraction.num = atoi(input.c_str());
+        fraction.denom = 1;
     }
     return inStream;
 }

@@ -12,16 +12,16 @@ class Fraction {
     public:
         // Constructors 
         Fraction();
-        Fraction(int num);
-        Fraction(int num, int denom);
+        Fraction(int numer);
+        Fraction(int numer, int denomin);
 
         // Accesors
-        int getNumerator();  // Add const at the end???
-        int getDenominator();  //" "
+        int numerator() const {return num; }  
+        int denominator() const {return denom; }
 
         // Modifiers
-        void setNumerator(int num);
-        void setDenominator(int denom);
+        void setnum(int num);
+        void setdenom(int denom);
 
         Fraction operator - (void) const;
         Fraction operator ++();
@@ -46,8 +46,8 @@ class Fraction {
         friend ostream& operator << (ostream&, const Fraction&);
         
     //private:
-        int numerator;
-        int denominator;
+        int num;
+        int denom;
 
 };
 
