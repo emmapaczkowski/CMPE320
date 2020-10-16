@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "fraction.h"	// Add your netid to the #include
+#include "fraction_17ep14.h"	// Add your netid to the #include
 
 int main() {
 
