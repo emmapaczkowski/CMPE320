@@ -12,27 +12,27 @@ using namespace std;
 
 
 void InsultGenerator::initialize() {
-    string filename = "src\\InsultsSource.txt";
-    ifstream fs(filename);
-    int num = 0;
-    
-    if (fs.fail()) {
-        throw FileException("File not opening");
-    }
+      string filename = "src\\InsultsSource.txt";
+      ifstream fs(filename);
+      int num = 0;
 
-    string col1;
-    string col2;
-    string col3;
+      if (fs.fail()) {
+          throw FileException("File not opening");
+      }
 
-        while (fs >> col1 >> col2 >> col3) {
-            column1[num] = col1;
-            column2[num] = col2;
-            column3[num] = col3;
-            num++;
-        }
+      string col1;
+      string col2;
+      string col3;
 
-    fs.close();
-};
+          while (fs >> col1 >> col2 >> col3) {
+              column1[num] = col1;
+              column2[num] = col2;
+              column3[num] = col3;
+              num++;
+          }
+
+      fs.close();
+  };
 
 string InsultGenerator::talkToMe() {
     return ("Thou "+ column1[rand()%50] + " " + column2[rand()%50] + " " + column3[rand()%50] + "!" );
