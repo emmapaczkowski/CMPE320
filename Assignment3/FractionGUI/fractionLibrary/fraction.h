@@ -27,10 +27,10 @@ public:
     Fraction operator++(int); //post-increment
 
     /*+ Binary Operator Overloading -*/
-    friend Fraction operator+(const Fraction& lhs, const Fraction& rhs); //addition
-    friend Fraction operator-(const Fraction& lhs, const Fraction& rhs); //subtraction
-    friend Fraction operator*(const Fraction& lhs, const Fraction& rhs); //multiplicatio
-    friend Fraction operator/(const Fraction& lhs, const Fraction& rhs); //division
+    friend FRACTION_EXPORT Fraction operator+(const Fraction& lhs, const Fraction& rhs); //addition
+    friend FRACTION_EXPORT Fraction operator-(const Fraction& lhs, const Fraction& rhs); //subtraction
+    friend FRACTION_EXPORT Fraction operator*(const Fraction& lhs, const Fraction& rhs); //multiplicatio
+    friend FRACTION_EXPORT Fraction operator/(const Fraction& lhs, const Fraction& rhs); //division
 
     Fraction& operator+=(const Fraction& rhs); //Addition and Assignment
 

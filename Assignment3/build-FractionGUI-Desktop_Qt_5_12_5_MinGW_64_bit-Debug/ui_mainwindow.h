@@ -21,6 +21,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -54,7 +55,15 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QPushButton *Calculate;
     QLabel *calOutput;
-    QLabel *answer;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_3;
+    QLabel *numerator;
+    QLabel *denominator;
+    QLabel *seperator;
+    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_6;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -160,7 +169,7 @@ public:
 
         gridLayoutWidget_4 = new QWidget(centralwidget);
         gridLayoutWidget_4->setObjectName(QString::fromUtf8("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(0, 320, 811, 80));
+        gridLayoutWidget_4->setGeometry(QRect(0, 320, 811, 86));
         gridLayout_7 = new QGridLayout(gridLayoutWidget_4);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_7->setContentsMargins(0, 0, 0, 0);
@@ -182,9 +191,45 @@ public:
 
         gridLayout_7->addWidget(calOutput, 1, 1, 1, 1);
 
-        answer = new QLabel(centralwidget);
-        answer->setObjectName(QString::fromUtf8("answer"));
-        answer->setGeometry(QRect(400, 430, 47, 14));
+        horizontalLayoutWidget_3 = new QWidget(centralwidget);
+        horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
+        horizontalLayoutWidget_3->setGeometry(QRect(0, 430, 801, 80));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        numerator = new QLabel(horizontalLayoutWidget_3);
+        numerator->setObjectName(QString::fromUtf8("numerator"));
+
+        gridLayout_3->addWidget(numerator, 1, 1, 1, 1);
+
+        denominator = new QLabel(horizontalLayoutWidget_3);
+        denominator->setObjectName(QString::fromUtf8("denominator"));
+
+        gridLayout_3->addWidget(denominator, 4, 1, 1, 1);
+
+        seperator = new QLabel(horizontalLayoutWidget_3);
+        seperator->setObjectName(QString::fromUtf8("seperator"));
+
+        gridLayout_3->addWidget(seperator, 2, 1, 1, 1);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer_5, 2, 0, 1, 1);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer_6, 2, 2, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout_3);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -208,8 +253,10 @@ public:
         subtraction->setText(QApplication::translate("MainWindow", "-", nullptr));
         label->setText(QApplication::translate("MainWindow", "Emma's Fraction Calculator App!", nullptr));
         Calculate->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        calOutput->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        answer->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        calOutput->setText(QString());
+        numerator->setText(QString());
+        denominator->setText(QString());
+        seperator->setText(QString());
     } // retranslateUi
 
 };
