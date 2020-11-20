@@ -68,4 +68,14 @@ class JumblePuzzle {
         char** generatePuzzle(int puzzleSize, char direction,  int rowPos, int colPos, const string& hiddenWord);   // removed static
 
 };
+
+class BadJumbleException : public exception {
+ public:
+    BadJumbleException(const char* messageIn) : message(messageIn) {};
+    const char* what() const throw () { 
+        return message; 
+    }
+ private:
+    const char* message;
+};
 #endif
