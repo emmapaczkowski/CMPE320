@@ -152,6 +152,24 @@ void testJumble() {
 		JumblePuzzle jp("HIDDENWORD", "hard");
 	cout << "\nPassed memory leak test!" << endl;
 
+	try {
+        JumblePuzzle jp("e", "hard");
+    } catch (BadJumbleException& e) {
+        cout << "Passed for words too shot\n";
+    }
+
+    try {
+        JumblePuzzle jp("emmapaczkowski", "hard");
+    } catch (BadJumbleException& e) {
+        cout << "Passed for word too long\n";
+    }
+
+    try {
+        JumblePuzzle jp("emma", "invalid");
+    } catch (BadJumbleException& e) {
+        cout << "Passed for invalid difficulty \n";
+    }
+
 } // end testJumble
 
 int main() {
@@ -159,7 +177,7 @@ int main() {
 	testJumble();
 
 	// Make sure your class works before you play the game!
-	//playGame();
+	playGame();
 
 	return 0;
 } // end main
