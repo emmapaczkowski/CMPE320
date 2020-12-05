@@ -8,11 +8,14 @@
  *
  * for CISC/CMPE 320 by Prof. Alan McLeod
  */
+
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "ShapesGood.h"
+using namespace std;
+
+#include "ShapesGood.h" 
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-*
+/*
  * This file contains some truly ugly code.  The creation and population of the
  * vector<Shape*> collection of drawing shapes is OK, but the use of this collection
  * is incredibly awful.  Because polymorphism was not a consideration when the hierarchy
@@ -10,6 +10,8 @@
  *
  * For CISC/CMPE 320, Assignment 5
  */
+
+/*
 #include <iostream>
 #include <string>
 #include <vector>
@@ -53,6 +55,9 @@ int main() {
 		delete shp;
 
 } // end main
+*/
+
+
 /*
 CONSOLE OUTPUT:
 
