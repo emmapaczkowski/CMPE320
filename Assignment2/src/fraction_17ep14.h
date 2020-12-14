@@ -1,66 +1,58 @@
-#include <fstream>
+#ifndef FRACTION_14VB16_H_
+#define FRACTION_14VB16_H_
+
 #include <iostream>
 #include <string>
-#include <vector>
-using namespace std;
-
 
 class Fraction {
-    
-    public:
-        // Constructors 
-        Fraction();
-        Fraction(int numer);
-        Fraction(int numer, int denomin);
+  public:
+    /* Creates a fraction of 0/1 */
+    Fraction();
 
-        // Accesors
-        int numerator() const {return num; }  
-        int denominator() const {return denom; }
+    /* Creates a fraction of numerator/1 */
+    Fraction(int numerator);
 
-        // Modifiers
-        void setnum(int num);
-        void setdenom(int denom);
+    /* Creates a fraction of numerator/denominator */
+    Fraction(int numerator, int denominator);
 
-        Fraction operator - (void) const;
-        Fraction operator ++();
-        Fraction operator ++(int);
-        Fraction operator += (const Fraction&);
+    /* Calculates the GCD between two numbers */
+    static int GCD(const int n, const int m);
 
-        friend Fraction operator + (const Fraction&, const Fraction&);
-        friend Fraction operator - (const Fraction&, const Fraction&);
-        friend Fraction operator * (const Fraction&, const Fraction&);
-        friend Fraction operator / (const Fraction&, const Fraction&);
-       
-        friend bool operator > (const Fraction&, const Fraction&);
-        friend bool operator < (const Fraction&, const Fraction&);
-        
-        bool operator <= (const Fraction&);
-        bool operator == (const Fraction&);
-        bool operator >= (const Fraction&);
-       
+    /* Calculates the LCM between two numbers */
+    static int LCM(const int n, const int m);
 
-        friend bool operator != (const Fraction&, const Fraction&);
-        friend istream& operator >> (istream&, Fraction&);
-        friend ostream& operator << (ostream&, const Fraction&);
-        
-    //private:
-        int num;
-        int denom;
 
+    int numerator() const;
+    int denominator() const;
+
+    Fraction operator-();
+    Fraction operator++(int);
+    Fraction& operator++();
+    Fraction& operator+=(const Fraction& rhs);
+  private:
+    int numeratorInternal;
+    int denominatorInternal;
+    static void charsToFraction(const char * buffer, Fraction * fraction);
+    friend std::istream& operator>>(std::istream& in, Fraction& fraction);
 };
 
-class FractionException {
-public:
-    FractionException(const string& message);
-    string& what(void);
-private:
-    string message;
+Fraction operator*(const Fraction& left, const Fraction& right);
+Fraction operator/(const Fraction& left, const Fraction& right);
+Fraction operator+(const Fraction& left, const Fraction& right);
+Fraction operator-(const Fraction& left, const Fraction& right);
+bool operator==(const Fraction& left, const Fraction& right);
+bool operator!=(const Fraction& left, const Fraction& right);
+bool operator<(const Fraction& left, const Fraction& right);
+bool operator>(const Fraction& left, const Fraction& right);
+bool operator<=(const Fraction& left, const Fraction& right);
+bool operator>=(const Fraction& left, const Fraction& right);
+std::ostream& operator<<(std::ostream& out, const Fraction& fraction);
+
+
+class FractionException : public std::runtime_error
+{
+  public:
+    FractionException(std::string message) : std::runtime_error(message) {};
 };
 
-int greatestCommonDivisor(int x, int y) {
-int z=x%y;
- if(z==0)
- return(y);
- else
- return(greatestCommonDivisor(y,z));
-}
+#endif /* FRACTION_14VB16_H_ */
